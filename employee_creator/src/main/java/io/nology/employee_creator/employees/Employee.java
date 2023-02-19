@@ -54,9 +54,10 @@ public class Employee {
 	
 	public Employee() {}
 	
-	public Employee(String firstName, String lastName, String mobile) {
+	public Employee(String firstName, String lastName, String email, String mobile) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
 		this.mobile = mobile;
 	}
 	

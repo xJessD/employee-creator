@@ -1,20 +1,33 @@
 package io.nology.employee_creator.employees;
 
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+
 public class EmployeeCreateDTO {
 
 	private Long id;
 	
+	@NotNull
 	private String firstName;
 	
 	private String middleName;
 	
+	@NotNull
 	private String lastName;
 	
+	@Nullable
+	@Email
 	private String email;
 	
+	@NotNull
 	private String mobile;
 	
-	public EmployeeCreateDTO(String firstName, String lastName, String mobile) {
+	public EmployeeCreateDTO(String firstName, String lastName, String email, String mobile) {
+		if (email != null) {
+			this.email = email;
+		}
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mobile = mobile;
