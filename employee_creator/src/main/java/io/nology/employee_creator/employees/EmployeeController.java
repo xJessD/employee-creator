@@ -34,8 +34,9 @@ public class EmployeeController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Employee> create(@RequestBody Employee data) {
+	public ResponseEntity<Employee> create(@Valid @RequestBody EmployeeCreateDTO data) {
 		Employee createdEmployee = this.service.create(data);
+		
 		return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
 	}
 	

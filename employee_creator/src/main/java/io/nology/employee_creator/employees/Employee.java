@@ -7,46 +7,50 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
+	private Long id;
 	
 	// Employee Person Info
 	@Column
-	String firstName;
+	private String firstName;
 	
 	@Column 
-	String middleName;
+	private String middleName;
 	
 	@Column
-	String lastName;
+	private String lastName;
 	
 	// Contact Details
 	@Column
-	String email;
+	private String email;
 	
 	@Column
-	String mobile;
+	private String mobile;
 	
 	// Employment Details
 	@Column
-	Boolean isPermanent;
+	private Boolean isPermanent;
 	
 	@Column
-	Date startDate;
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
 	
 	@Column
-	Date finishDate;
+	@Temporal(TemporalType.DATE)
+	private Date finishDate;
 	
 	@Column
-	Boolean isFullTime;
+	private Boolean isFullTime;
 	
 	@Column
-	short hoursPerWeek;
+	private short hoursPerWeek;
 	
 	public Employee() {}
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @Service
 @Transactional
@@ -15,7 +16,7 @@ public class EmployeeService {
 	private EmployeeRepository repository;
 	
 	public String hello() {
-		return "Helloooooo";
+		return "Testing endpoint";
 	}
 	
 	public List<Employee> all() {
@@ -23,7 +24,7 @@ public class EmployeeService {
 		
 	}
 	
-	public Employee create(Employee data) {
+	public Employee create(@Valid EmployeeCreateDTO data) {
 		
 		Employee newEmployee = new Employee(data.getFirstName(), data.getLastName(), data.getMobile());
 		this.repository.save(newEmployee);
