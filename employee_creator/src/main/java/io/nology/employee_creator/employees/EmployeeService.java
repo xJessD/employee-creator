@@ -21,8 +21,11 @@ public class EmployeeService {
 	}
 	
 	public Employee create(@Valid EmployeeCreateDTO data) {
+		String cleanedFirstName = data.getFirstName().trim();
+		String cleanedLastName = data.getLastName().trim();
+		String cleanedEmail = data.getEmail().trim();
 		
-		Employee newEmployee = new Employee(data.getFirstName(), data.getLastName(), data.getEmail(), data.getMobile());
+		Employee newEmployee = new Employee(cleanedFirstName, cleanedLastName, cleanedEmail, data.getMobile());
 		this.repository.save(newEmployee);
 		
 		return newEmployee;
@@ -36,6 +39,17 @@ public class EmployeeService {
 	
 	public Optional<Employee> findOne(Long employeeId) {
 		return this.repository.findById(employeeId);
+	}
+	
+	public boolean deleteOne(Long employeeId) {
+		Optional<Employee> maybeEmployee = this.findOne(employeeId);
+		
+		if (maybeEmployee.isEmpty()) {
+			return false;
+		}
+		
+		this.repository.delete(maybeEmployee.get());
+		return true;
 	}
 
 	
